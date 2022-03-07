@@ -823,7 +823,7 @@ impl WindowBuilder for WindowBuilderWrapper {
     Ok(self)
   }
 
-  #[cfg(any(target_os = "windows", target_os = "linux"))]
+  #[cfg(any(target_os = "windows", target_os = "linux", target_os = "freebsd"))]
   fn skip_taskbar(mut self, skip: bool) -> Self {
     self.inner = self.inner.with_skip_taskbar(skip);
     self

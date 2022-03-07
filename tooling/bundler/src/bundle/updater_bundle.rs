@@ -116,6 +116,14 @@ fn bundle_update(settings: &Settings, bundles: &[Bundle]) -> crate::Result<Vec<P
   Ok(vec![appimage_archived_path])
 }
 
+// Create simple update-freebsd_<arch>.pkg
+// Right now in freebsd we hot replace the bin and request a restart
+// No assets are replaced
+#[cfg(target_os = "freebsd")]
+fn bundle_update(settings: &Settings, bundles: &[Bundle]) -> crate::Result<Vec<PathBuf>> {
+  return Err(crate::Error::UnableToFindProject);
+}
+
 // Create simple update-win_<arch>.zip
 // Including the binary as root
 // Right now in windows we hot replace the bin and request a restart

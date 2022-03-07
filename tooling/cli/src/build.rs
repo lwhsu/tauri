@@ -216,7 +216,7 @@ pub fn command(options: Options) -> Result<()> {
   if let Some(product_name) = config_.package.product_name.clone() {
     #[cfg(windows)]
     let product_path = out_dir.join(format!("{}.exe", product_name));
-    #[cfg(target_os = "macos")]
+    #[cfg(any(target_os = "macos", target_os = "freebsd"))]
     let product_path = out_dir.join(product_name);
     #[cfg(target_os = "linux")]
     let product_path = out_dir.join(product_name.to_kebab_case());
